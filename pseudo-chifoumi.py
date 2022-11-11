@@ -23,26 +23,28 @@
 
 #Démarre la boucle inifinie avec while True
     # Défini une string attribué à wellText qui contient soit ", 4-well, 5-bomb" si la variable well est vrai ou aucun texte si elle est false, tout ça dans une condition en une ligne car ça fait gagner de la place :D
-    #Demande au joueur de faire son choix entre 1-papier, 2-pierre ou 3-cisseaux et concatene le contenu de wellText pour ajouter les indications pour le puit et la bombe si ce mode est activé
-    #Utiliser random.randint(1, well and 5 or 3) pour faire en sorte que l'ordi choisisse un mouvement entre 1 et 3 si well est False ou 1 et 5 si well est True. Aussi en une ligne car c'est pratique
+    
+    #Demande au joueur de faire son choix entre 1-papier, 2-pierre ou 3-cisseaux et concatene le contenu de wellText pour ajouter les indications pour le puit et la bombe si ce mode est activé. La valeur retourné par le input est attribué à playerChoice
+    
+    #Utiliser random.randint(1, well and 5 or 3) pour faire en sorte que l'ordi choisisse un mouvement entre 1 et 3 si well est False ou 1 et 5 si well est True qui sera attribué à la variable aiChoice. Aussi en une ligne car c'est pratique
 
 
-    # Si playerchoice est paper
-        # Changer playerchoice pour 1
-    # Sinon si playerchoice est rock
-        # Changer playerchoice pour 2
-    # Sinon si playerchoice est cissor
-        # Changer playerchoice pour 3
-    # Sinon si well est True et playerchoice est well
-        # Changer playerchoice pour 4
-    # Sinon si well est True et playerchoice est bomb
-        # Changer playerchoice pour 5
+    # Si playerChoice est "paper"
+        # Changer playerChoice pour 1
+    # Sinon si playerChoice est "rock"
+        # Changer playerChoice pour 2
+    # Sinon si playerChoice est "cissor"
+        # Changer playerChoice pour 3
+    # Sinon si well est True et playerChoice est "well"
+        # Changer playerChoice pour 4
+    # Sinon si well est True et playerChoice est "bomb"
+        # Changer playerChoice pour 5
     # Sinon
-        # On essaye de changer playerchoice en integer
-            #Si playerchoice est plus grand que la taille de la table de mouvements
+        # On essaye de changer playerChoice en integer
+            #Si playerChoice est plus grand que la taille de la table de mouvements
                 # On change la variable canStart à False
                 # On affiche un message d'erreur sans arrêter le jeu
-        # Dans le cas où ça marche pas,
+        # Dans le cas où ça marche pas:
             # la variable canStart devient alors False
             # Et on affiche un message d'erreur sans arrêter le programme
 
