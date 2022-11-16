@@ -1,6 +1,6 @@
 import random
 
-grid = [[1, 0, 1],
+grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
@@ -34,13 +34,19 @@ def checkGrid(x:int, y:int=-1)->bool:
     return grid[x][y]==0
 
 def convertToGridIndex(x:int)->tuple:
-    if x<=3:
-        x, y = 0, x-1
-    elif x<=6:
-        x, y = 1, x-4
-    else:
-        x, y = 2, x-7
+    x = x-1
+    if x<0:
+        x, y = 0, 0
+    elif x<2:
+        x, y = 0, x
+    elif x<5:
+        x, y = 1, x-3
+    elif x<8:
+        x, y = 2, x-6
     return x, y
+
+def convertToNormalIndex(x:int, y:int)->int:
+    return ((y*3)+x)+1
 
 def checkVictory(nb:int)->bool:
     verif = 0
@@ -71,8 +77,58 @@ def checkVictory(nb:int)->bool:
         return True
     return False
 
+def getBoxValue(i):
+    x, y = convertToGridIndex(i)
+    return grid[x][y]
+
+
 def ordiChoice():
-    #TODO
+    corners = [1, 3, 7, 9]
+    random.shuffle(corners)
+
+    ligne = 0
+    possibleLastBox = None
+    print(possibleLastBox)
+    for x in range(3):
+        for y in range(3):
+            if grid[x][y]==1:
+                ligne=ligne+1
+            else:
+                if possibleLastBox!=None:
+                    break
+                possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2:
+            print("Blocked!")
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
+    for y in range(3):
+        for x in range(3):
+            if grid[x][y]==1:
+                ligne=ligne+1
+            else:
+                if possibleLastBox!=None:
+                    break
+                possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2:
+            print("Blocked!")
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
+    if getBoxValue(5)==0:
+        print("Center")
+        return 5
+
+    for i in corners:
+        if getBoxValue(i)==0:
+            print("Corner")
+            return i
+    print("Random")
+    return random.randint(1, 9)
                 
     
 
