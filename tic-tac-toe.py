@@ -34,19 +34,28 @@ def checkGrid(x:int, y:int=-1)->bool:
     return grid[x][y]==0
 
 def convertToGridIndex(x:int)->tuple:
-    x = x-1
-    if x<0:
-        x, y = 0, 0
-    elif x<2:
-        x, y = 0, x
-    elif x<5:
-        x, y = 1, x-3
-    elif x<8:
-        x, y = 2, x-6
-    return x, y
+    if x == 1:
+        return 0, 0
+    elif x == 2:
+        return 0, 1
+    elif x == 3:
+        return 0, 2
+    elif x == 4:
+        return 1, 0
+    elif x == 5:
+        return 1, 1
+    elif x == 6:
+        return 1, 2
+    elif x == 7:
+        return 2, 0
+    elif x == 8:
+        return 2, 1
+    elif x == 9:
+        return 2, 2
+    raise IndexError
 
 def convertToNormalIndex(x:int, y:int)->int:
-    return ((y*3)+x)+1
+    return ((x*3)+y)+1
 
 def checkVictory(nb:int)->bool:
     verif = 0
@@ -96,8 +105,9 @@ def ordiChoice():
             else:
                 if possibleLastBox!=None:
                     break
-                possibleLastBox = convertToNormalIndex(x, y)
-        if ligne == 2:
+                if grid[x][y]!=2:
+                    possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
             print("Blocked!")
             return possibleLastBox
         else:
@@ -111,8 +121,9 @@ def ordiChoice():
             else:
                 if possibleLastBox!=None:
                     break
-                possibleLastBox = convertToNormalIndex(x, y)
-        if ligne == 2:
+                if grid[x][y]!=2:
+                    possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
             print("Blocked!")
             return possibleLastBox
         else:
@@ -130,7 +141,13 @@ def ordiChoice():
     print("Random")
     return random.randint(1, 9)
                 
-    
+def isGridFull():
+    boxTaken = 0
+    for x in range(3):
+        for y in range(3):
+            if grid[x][y]!=0:
+                boxTaken += 1
+    return boxTaken==9
 
 
 while True:
@@ -162,5 +179,8 @@ while True:
         break
     elif checkVictory(2):
         print("\n\nThe ordi won!")
+        break
+    elif isGridFull():
+        print("Tie!")
         break
 printGrid()
