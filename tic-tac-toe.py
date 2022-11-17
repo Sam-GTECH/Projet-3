@@ -4,7 +4,7 @@ grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
-playerTurn = False#random.randint(0, 1)==0
+playerTurn = False
 
 choice = None
 
@@ -97,7 +97,6 @@ def ordiChoice():
 
     ligne = 0
     possibleLastBox = None
-    print(possibleLastBox)
     for x in range(3):
         for y in range(3):
             if grid[x][y]==1:
@@ -108,7 +107,6 @@ def ordiChoice():
                 if grid[x][y]!=2:
                     possibleLastBox = convertToNormalIndex(x, y)
         if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            print("Blocked!")
             return possibleLastBox
         else:
             ligne = 0
@@ -124,21 +122,17 @@ def ordiChoice():
                 if grid[x][y]!=2:
                     possibleLastBox = convertToNormalIndex(x, y)
         if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            print("Blocked!")
             return possibleLastBox
         else:
             ligne = 0
             possibleLastBox = None
 
     if getBoxValue(5)==0:
-        print("Center")
         return 5
 
     for i in corners:
         if getBoxValue(i)==0:
-            print("Corner")
             return i
-    print("Random")
     return random.randint(1, 9)
                 
 def isGridFull():
