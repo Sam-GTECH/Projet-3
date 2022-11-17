@@ -1,44 +1,26 @@
-# DEBUT
-
-# On importe la librarie random
 import random
 
-#On atttribue à une variable grid une matrix de 3 par 3
 grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
-# Attribue à la variable playerTurn la valeur False
 playerTurn = False
 
-#Déclarer la variable choice sans valeur (None)
 choice = None
 
-#Définir printGrid qui affiche la grille du jeu
+
 def printGrid():
-    # Faire une boucle qui se répète suivant le nombre de lignes dans grid
     for i in range(len(grid)):
-        #Si i est égal à zéro
         if i==0:
-            #On affiche "┌─┬─┬─┐", le sommet de la grille
             print("┌─┬─┬─┐")
-        #On affiche une barre de séparation
         print("│", end="")
-        # Faire une boucle qui se répète suivant le nombre de collones dans grid
         for j in grid[i]:
-            # Si j est égal à 0
             if j==0:
-                #afficher un espace vide
                 print(" ", end="")
-            # Sinon si j est égal à 1
             elif j==1:
-                #Afficher un O
                 print("O", end="")
-            # Sinon si j est égal à 2
             elif j==2:
-                # Afficher un X
                 print("X", end="")
-            #On affiche une barre de séparation
             print("│", end="")
         if i==2:
             print("\n└─┴─┴─┘")
@@ -110,10 +92,48 @@ def getBoxValue(i):
 
 
 def ordiChoice():
-    rand = random.randint(1, 9)
-    while not checkGrid(*convertToGridIndex(rand)):
-        rand = random.randint(1, 9)
-    return rand
+    corners = [1, 3, 7, 9]
+    random.shuffle(corners)
+
+    ligne = 0
+    possibleLastBox = None
+    for x in range(3):
+        for y in range(3):
+            if grid[x][y]==1:
+                ligne=ligne+1
+            else:
+                if possibleLastBox!=None:
+                    break
+                if grid[x][y]!=2:
+                    possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
+    for y in range(3):
+        for x in range(3):
+            if grid[x][y]==1:
+                ligne=ligne+1
+            else:
+                if possibleLastBox!=None:
+                    break
+                if grid[x][y]!=2:
+                    possibleLastBox = convertToNormalIndex(x, y)
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
+    if getBoxValue(5)==0:
+        return 5
+
+    for i in corners:
+        if getBoxValue(i)==0:
+            return i
+    return random.randint(1, 9)
                 
 def isGridFull():
     boxTaken = 0
@@ -158,5 +178,3 @@ while True:
         print("Tie!")
         break
 printGrid()
-
-# END
