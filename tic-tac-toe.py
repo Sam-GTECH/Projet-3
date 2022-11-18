@@ -190,8 +190,10 @@ while True:
         try:
             #convertir choice en integer
             choice = int(choice)
-            #si choice <1 ou > 9:
+            #si choice est inférieur à 1 ou supérieur à 9:
             if choice<1 or choice>9:
+                #Mettre choix à None
+                choice = None
                 #afficher un message d'erreur
                 print("The user choice is out of range (must be between 1 and 9)")
             #Si la case choisie est prise
@@ -202,6 +204,8 @@ while True:
                 print("The chosen case is already taken.")
         #si l'éssai échoue
         except:
+            #Mettre choix à None
+            choice = None
             #afficher "The user choice should be an integer"
             print("The user choice should be an integer")
     #assigner à des variable x et y la position de l'index choice dans la grille
