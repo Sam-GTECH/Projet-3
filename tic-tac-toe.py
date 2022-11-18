@@ -8,8 +8,8 @@ grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
-# Attribue à la variable playerTurn la valeur False
-playerTurn = False
+# Attribue à la variable playerisOne la valeur True ou False en utilisant une condition avec random.randint(0, 1)
+playerisOne = random.randint(0,1)==0
 
 #Déclarer la variable choice sans valeur (None)
 choice = None
@@ -40,16 +40,25 @@ def printGrid():
                 print("X", end="")
             #On affiche une barre de séparation
             print("│", end="")
+        #Si i est égal à 2
         if i==2:
+            #Affichier "\n└─┴─┴─┘", le  bas de la grille
             print("\n└─┴─┴─┘")
+        #Sinon
         else:
+            #On affiche "\n├─┼─┼─┤" qui sépare deux lignes
             print("\n├─┼─┼─┤")
 
+#Faire une fonction checkGrid qui prend une position x obligatoire et une position y optionnel. Si y n'est pas renseigné, la valeur par défaut est -1
 def checkGrid(x:int, y:int=-1)->bool:
+    # Si y est égal à -1
     if y==-1:
+        #On appelle convertToGridIndex avec x comme argument et on donne les valeurs renvoyés aux variables x et y
         x, y = convertToGridIndex(x)
 
+    #On retourne si la valeur de la grid aux positions x et y est égal à 0
     return grid[x][y]==0
+
 
 def convertToGridIndex(x:int)->tuple:
     if x == 1:
@@ -125,34 +134,29 @@ def isGridFull():
 
 
 while True:
-    if playerTurn:
-        while choice==None:
-            printGrid()
-            choice = input("It's your turn! (1-9) ")
-            try:
-                choice = int(choice)
-                if choice<1 or choice>9:
-                    raise IndexError
-                if not checkGrid(choice):
-                    choice = None
-                    print("The chosen case is already taken.")
-            except:
-                raise TypeError("The user choice should be an integer")
-    else:
-        print("It's the ordi's turn!")
-        while choice==None or not checkGrid(choice):
-            choice = ordiChoice()
+    while choice==None:
+        printGrid()
+        choice = input("It's the Player "+ (playerisOne and "1" or "2") +"'s turn! (1-9) ")
+        try:
+            choice = int(choice)
+            if choice<1 or choice>9:
+                raise IndexError
+            if not checkGrid(choice):
+                choice = None
+                print("The chosen case is already taken.")
+        except:
+            raise TypeError("The user choice should be an integer")
     x, y = convertToGridIndex(choice)
 
-    grid[x][y] = playerTurn and 1 or 2
+    grid[x][y] = playerisOne and 1 or 2
     choice = None
-    playerTurn = not playerTurn
+    playerisOne = not playerisOne
 
     if checkVictory(1):
-        print("\n\nThe user won!!")
+        print("\n\nThe Player 1 won!!")
         break
     elif checkVictory(2):
-        print("\n\nThe ordi won!")
+        print("\n\nThe Player 2 won!")
         break
     elif isGridFull():
         print("Tie!")
