@@ -156,48 +156,82 @@ def checkVictory(nb:int)->bool:
         return True
     # Retourne False
     return False
-
+#definir une fonction renvoie la valeur a la position de la grille
 def getBoxValue(i):
+    #convertir i en x, y
     x, y = convertToGridIndex(i)
+    #retourner la valeur de la position x, y dans la grille
     return grid[x][y]
-                
+
+#définir une fonction permettant de détecter si la grille est pleine
 def isGridFull():
+    #définir une variable boxTaken
     boxTaken = 0
+    #Pour x dans une rangée de  3
     for x in range(3):
+        #Pour y dans une rangée de 3
         for y in range(3):
+            #Si grille x, y ne vaut pas 0
             if grid[x][y]!=0:
+                #ajouter 1 a boxTaken
                 boxTaken += 1
+    #retourner boxTaken == 9 (true ou false)
     return boxTaken==9
 
-
+#boucle infinie
 while True:
+    #Tant que choice est égal à none
     while choice==None:
+        #afficher la grille
         printGrid()
+        #mettre choix à une entrée input avec une phrase disant quel joueur doit jouer
         choice = input("It's the Player "+ (playerisOne and "1" or "2") +"'s turn! (1-9) ")
+        #essayer
         try:
+            #convertir choice en integer
             choice = int(choice)
+            #si choice <1 ou > 9:
             if choice<1 or choice>9:
+                #afficher un message d'erreur
                 raise IndexError
+            #Si la case choisie est prise
             if not checkGrid(choice):
+                #Mettre choix à None
                 choice = None
+                #afficher un message disant que la case est prise
                 print("The chosen case is already taken.")
+        #si l'éssai échoue
         except:
+            #afficher "The user choice should be an integer"
             raise TypeError("The user choice should be an integer")
+    #définir des variable x et y de position dans la grille
     x, y = convertToGridIndex(choice)
 
+    #défir grille x, y selon quel joueur joue
     grid[x][y] = playerisOne and 1 or 2
+    #mettre choix à none
     choice = None
+    #inverser la valeur booleenne de playerisOne
     playerisOne = not playerisOne
-
+    #si une victoire est vérifié par le joueur 1:
     if checkVictory(1):
+        #afficher un message de victoire pour le joueur 1
         print("\n\nThe Player 1 won!!")
+        #quitter la boucle
         break
+    #Sinon si une victoire est vérifié par le joueur 2:
     elif checkVictory(2):
+        #afficher un message de victoire pour le joueur 2
         print("\n\nThe Player 2 won!")
+        #quitter la boucle
         break
+    #sinon si la grille est pleine:
     elif isGridFull():
+        #afficher un message 
         print("Tie!")
+        #quitter la boucle
         break
+#afficher la grille
 printGrid()
 
 # END
