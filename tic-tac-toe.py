@@ -184,7 +184,7 @@ while True:
     while choice==None:
         #afficher la grille
         printGrid()
-        #mettre choix à une entrée input avec une phrase disant quel joueur doit jouer
+        #mettre choix à une entrée input avec une phrase disant quel joueur doit jouer en concatenant 1 ou 2 suivant si playerisOne est True ou False
         choice = input("It's the Player "+ (playerisOne and "1" or "2") +"'s turn! (1-9) ")
         #essayer
         try:
@@ -193,7 +193,7 @@ while True:
             #si choice <1 ou > 9:
             if choice<1 or choice>9:
                 #afficher un message d'erreur
-                raise IndexError
+                print("The user choice is out of range (must be between 1 and 9)")
             #Si la case choisie est prise
             if not checkGrid(choice):
                 #Mettre choix à None
@@ -203,31 +203,31 @@ while True:
         #si l'éssai échoue
         except:
             #afficher "The user choice should be an integer"
-            raise TypeError("The user choice should be an integer")
-    #définir des variable x et y de position dans la grille
+            print("The user choice should be an integer")
+    #assigner à des variable x et y la position de l'index choice dans la grille
     x, y = convertToGridIndex(choice)
 
-    #défir grille x, y selon quel joueur joue
+    #assigner à la grid en position x, y 1 ou 2 suivant si playerisOne est True ou False
     grid[x][y] = playerisOne and 1 or 2
     #mettre choix à none
     choice = None
     #inverser la valeur booleenne de playerisOne
     playerisOne = not playerisOne
-    #si une victoire est vérifié par le joueur 1:
+    #si checkVictory() renvoit True par le joueur 1:
     if checkVictory(1):
         #afficher un message de victoire pour le joueur 1
         print("\n\nThe Player 1 won!!")
         #quitter la boucle
         break
-    #Sinon si une victoire est vérifié par le joueur 2:
+    #Sinon si checkVictory() renvoit True par le joueur 2:
     elif checkVictory(2):
         #afficher un message de victoire pour le joueur 2
         print("\n\nThe Player 2 won!")
         #quitter la boucle
         break
-    #sinon si la grille est pleine:
+    #sinon isGridFull renvoit True
     elif isGridFull():
-        #afficher un message 
+        #afficher un message annonçant l'égalité 
         print("Tie!")
         #quitter la boucle
         break
