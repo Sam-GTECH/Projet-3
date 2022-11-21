@@ -108,11 +108,11 @@ def ordiChoice():
                 break
             if grid[x][y]!=2:
                 possibleLastBox = i
-        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            return possibleLastBox
-        else:
-            ligne = 0
-            possibleLastBox = None
+    if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+        return possibleLastBox
+    else:
+        ligne = 0
+        possibleLastBox = None
 
     # Second diagonal line
     for i in [3, 5, 7]:
@@ -124,11 +124,11 @@ def ordiChoice():
                 break
             if grid[x][y]!=2:
                 possibleLastBox = i
-        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            return possibleLastBox
-        else:
-            ligne = 0
-            possibleLastBox = None
+    if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+        return possibleLastBox
+    else:
+        ligne = 0
+        possibleLastBox = None
 
     for x in range(3):
         for y in range(3):
