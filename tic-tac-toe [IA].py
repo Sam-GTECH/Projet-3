@@ -4,7 +4,7 @@ grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
-playerTurn = False
+playerTurn = random.randint(0,1)==0
 
 choice = None
 
@@ -134,7 +134,7 @@ def ordiChoice():
         if getBoxValue(i)==0:
             return i
     return random.randint(1, 9)
-                
+
 def isGridFull():
     boxTaken = 0
     for x in range(3):
