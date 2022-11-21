@@ -225,12 +225,14 @@ while True:
             try:
                 choice = int(choice)
                 if choice<1 or choice>9:
-                    raise IndexError
+                    choice = None
+                    print("The user choice is out of range (must be between 1 and 9)")
                 if not checkGrid(choice):
                     choice = None
                     print("The chosen case is already taken.")
             except:
-                raise TypeError("The user choice should be an integer")
+                choice = None
+                print("The user choice should be an integer")
     else:
         print("It's the ordi's turn!")
         while choice==None or not checkGrid(choice):
