@@ -1,22 +1,28 @@
 # DEBUT
 
-# On importe la librarie random
+# Importer la librarie random
 import random
 
-#On atttribue à une variable grid une matrix de 3 par 3
+# Atttribuer une matrix de 3 par 3 à une variable grid
 grid = [[0, 0, 0],
         [0, 0, 0],
         [0, 0, 0]]
 
-# Attribue à la variable playerisOne la valeur True ou False en utilisant une condition avec random.randint(0, 1)
+# Attribuer la valeur True ou False en utilisant une condition avec random.randint(0, 1) à une variable playerisOne
 playerisOne = random.randint(0,1)==0
 
-#Déclarer la variable choice sans valeur (None)
+# Assigner None à une variable choice
 choice = None
+
+# Assigner True à une variable firstPlayerChoice
+firstPlayerChoice = True
 
 #Définir printGrid qui affiche la grille du jeu
 def printGrid():
     # Faire une boucle qui se répète suivant le nombre de lignes dans grid
+    if firstPlayerChoice:
+        nbIndex = 1
+    
     for i in range(len(grid)):
         #Si i est égal à zéro
         if i==0:
@@ -29,7 +35,11 @@ def printGrid():
             # Si j est égal à 0
             if j==0:
                 #afficher un espace vide
-                print(" ", end="")
+                if firstPlayerChoice:
+                    print(nbIndex, end="")
+                    nbIndex=nbIndex+1
+                else:
+                    print(" ", end="")
             # Sinon si j est égal à 1
             elif j==1:
                 #Afficher un O
@@ -217,6 +227,12 @@ while True:
     choice = None
     #inverser la valeur booleenne de playerisOne
     playerisOne = not playerisOne
+
+    #Si firstPlayerChoice est égal à False
+    if firstPlayerChoice:
+        # Assigner False à firstPlayerChoice
+        firstPlayerChoice = False
+
     #si checkVictory() renvoit True par le joueur 1:
     if checkVictory(1):
         #afficher un message de victoire pour le joueur 1
