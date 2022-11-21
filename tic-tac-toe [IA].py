@@ -1,10 +1,10 @@
 import random
 
-grid = [[2, 0, 2],
+grid = [[0, 0, 0],
         [0, 0, 0],
-        [1, 0, 0]]
+        [0, 0, 0]]
 
-playerTurn = True
+playerTurn = random.randint(0,1)==0
 
 choice = None
 
