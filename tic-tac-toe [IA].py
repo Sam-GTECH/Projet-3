@@ -98,18 +98,29 @@ def ordiChoice():
     ligne = 0
     possibleLastBox = None
 
+    winBox = None
+    blockBox = None
+
     # First diagonal line
     for i in [1, 5, 9]:
         x, y = convertToGridIndex(i)
-        if grid[x][y]==1 or grid[x][y]==2:
+        if grid[x][y]==1:
             ligne=ligne+1
+        elif grid[x][y]==2:
+            ligne=ligne-1
         else:
             if possibleLastBox!=None:
                 break
             #if grid[x][y]!=2:
-            #    possibleLastBox = i
+            possibleLastBox = i
     if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-        return possibleLastBox
+        blockBox = possibleLastBox
+        ligne = 0
+        possibleLastBox = None
+    elif ligne == -2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+        winBox = possibleLastBox
+        ligne = 0
+        possibleLastBox = None
     else:
         ligne = 0
         possibleLastBox = None
@@ -117,51 +128,80 @@ def ordiChoice():
     # Second diagonal line
     for i in [3, 5, 7]:
         x, y = convertToGridIndex(i)
-        if grid[x][y]==1 or grid[x][y]==2:
+        if grid[x][y]==1:
             ligne=ligne+1
+        elif grid[x][y]==2:
+            ligne=ligne-1
         else:
             if possibleLastBox!=None:
                 break
             #if grid[x][y]!=2:
-            #    possibleLastBox = i
+            possibleLastBox = i
     if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-        return possibleLastBox
+        blockBox = possibleLastBox
+        ligne = 0
+        possibleLastBox = None
+    elif ligne == -2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+        winBox = possibleLastBox
+        ligne = 0
+        possibleLastBox = None
     else:
         ligne = 0
         possibleLastBox = None
 
     for x in range(3):
         for y in range(3):
-            if grid[x][y]==1 or grid[x][y]==2:
+            if grid[x][y]==1:
                 ligne=ligne+1
+            elif grid[x][y]==2:
+                ligne=ligne-1
             else:
                 if possibleLastBox!=None:
                     break
-                if grid[x][y]!=2:
-                    possibleLastBox = convertToNormalIndex(x, y)
+                #if grid[x][y]!=2:
+                possibleLastBox = convertToNormalIndex(x, y)
         if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            return possibleLastBox
+            blockBox = possibleLastBox
+            ligne = 0
+            possibleLastBox = None
+        elif ligne == -2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            winBox = possibleLastBox
+            ligne = 0
+            possibleLastBox = None
         else:
             ligne = 0
             possibleLastBox = None
 
     for y in range(3):
         for x in range(3):
-            if grid[x][y]==1 or grid[x][y]==2:
+            if grid[x][y]==1:
                 ligne=ligne+1
+            elif grid[x][y]==2:
+                ligne=ligne-1
             else:
                 if possibleLastBox!=None:
                     break
-                if grid[x][y]!=2:
-                    possibleLastBox = convertToNormalIndex(x, y)
+                #if grid[x][y]!=2:
+                possibleLastBox = convertToNormalIndex(x, y)
         if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
-            return possibleLastBox
+            blockBox = possibleLastBox
+            ligne = 0
+            possibleLastBox = None
+        elif ligne == -2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            winBox = possibleLastBox
+            ligne = 0
+            possibleLastBox = None
         else:
             ligne = 0
             possibleLastBox = None
 
     if getBoxValue(5)==0:
         return 5
+
+    if winBox:
+        return winBox
+    elif blockBox:
+        return blockBox
 
     for i in corners:
         if getBoxValue(i)==0:
@@ -176,7 +216,7 @@ def isGridFull():
                 boxTaken += 1
     return boxTaken==9
 
-
+print("User: O | CPU: X")
 while True:
     if playerTurn:
         while choice==None:
