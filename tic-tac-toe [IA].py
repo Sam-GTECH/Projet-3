@@ -1,10 +1,10 @@
 import random
 
-grid = [[0, 0, 0],
+grid = [[2, 0, 2],
         [0, 0, 0],
-        [0, 0, 0]]
+        [1, 0, 0]]
 
-playerTurn = random.randint(0,1)==0
+playerTurn = True
 
 choice = None
 
@@ -101,13 +101,13 @@ def ordiChoice():
     # First diagonal line
     for i in [1, 5, 9]:
         x, y = convertToGridIndex(i)
-        if grid[x][y]==1:
+        if grid[x][y]==1 or grid[x][y]==2:
             ligne=ligne+1
         else:
             if possibleLastBox!=None:
                 break
-            if grid[x][y]!=2:
-                possibleLastBox = i
+            #if grid[x][y]!=2:
+            #    possibleLastBox = i
     if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
         return possibleLastBox
     else:
@@ -117,13 +117,13 @@ def ordiChoice():
     # Second diagonal line
     for i in [3, 5, 7]:
         x, y = convertToGridIndex(i)
-        if grid[x][y]==1:
+        if grid[x][y]==1 or grid[x][y]==2:
             ligne=ligne+1
         else:
             if possibleLastBox!=None:
                 break
-            if grid[x][y]!=2:
-                possibleLastBox = i
+            #if grid[x][y]!=2:
+            #    possibleLastBox = i
     if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
         return possibleLastBox
     else:
@@ -132,7 +132,7 @@ def ordiChoice():
 
     for x in range(3):
         for y in range(3):
-            if grid[x][y]==1:
+            if grid[x][y]==1 or grid[x][y]==2:
                 ligne=ligne+1
             else:
                 if possibleLastBox!=None:
@@ -147,7 +147,7 @@ def ordiChoice():
 
     for y in range(3):
         for x in range(3):
-            if grid[x][y]==1:
+            if grid[x][y]==1 or grid[x][y]==2:
                 ligne=ligne+1
             else:
                 if possibleLastBox!=None:
