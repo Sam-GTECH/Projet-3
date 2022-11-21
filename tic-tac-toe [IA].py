@@ -97,6 +97,39 @@ def ordiChoice():
 
     ligne = 0
     possibleLastBox = None
+
+    # First diagonal line
+    for i in [1, 5, 9]:
+        x, y = convertToGridIndex(i)
+        if grid[x][y]==1:
+            ligne=ligne+1
+        else:
+            if possibleLastBox!=None:
+                break
+            if grid[x][y]!=2:
+                possibleLastBox = i
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
+    # Second diagonal line
+    for i in [3, 5, 7]:
+        x, y = convertToGridIndex(i)
+        if grid[x][y]==1:
+            ligne=ligne+1
+        else:
+            if possibleLastBox!=None:
+                break
+            if grid[x][y]!=2:
+                possibleLastBox = i
+        if ligne == 2 and possibleLastBox and getBoxValue(possibleLastBox)==0:
+            return possibleLastBox
+        else:
+            ligne = 0
+            possibleLastBox = None
+
     for x in range(3):
         for y in range(3):
             if grid[x][y]==1:
