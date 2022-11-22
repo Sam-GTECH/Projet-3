@@ -27,7 +27,7 @@ def printGrid():
         #Si i est égal à zéro
         if i==0:
             #On affiche "┌─┬─┬─┐", le sommet de la grille
-            print("┌─┬─┬─┐")
+            print("┌───┬───┬───┐")
         #On affiche une barre de séparation
         print("│", end="")
         # Faire une boucle qui se répète suivant le nombre de collones dans grid
@@ -37,29 +37,30 @@ def printGrid():
                 # Si firstPlayerChoice est égal à True
                 if firstPlayerChoice:
                     # Affichier index
-                    print(index, end="")
+                    print(f" {index} ", end="")
                 else:
                     # Afficher un espace vide
-                    print(" ", end="")
-                index=index+1
+                    print("   ", end="")
             # Sinon si j est égal à 1
             elif j==1:
                 #Afficher un O
-                print("O", end="")
+                print(" O ", end="")
             # Sinon si j est égal à 2
             elif j==2:
                 # Afficher un X
-                print("X", end="")
+                print(" X ", end="")
+            # Incrémenter index de 1
+            index=index+1
             #On affiche une barre de séparation
             print("│", end="")
         #Si i est égal à 2
         if i==2:
             #Affichier "\n└─┴─┴─┘", le  bas de la grille
-            print("\n└─┴─┴─┘")
+            print("\n└───┴───┴───┘")
         #Sinon
         else:
             #On affiche "\n├─┼─┼─┤" qui sépare deux lignes
-            print("\n├─┼─┼─┤")
+            print("\n├───┼───┼───┤")
 
 #Faire une fonction checkGrid qui prend une position x obligatoire et une position y optionnel. Si y n'est pas renseigné, la valeur par défaut est -1
 def checkGrid(x:int, y:int=-1)->bool:
