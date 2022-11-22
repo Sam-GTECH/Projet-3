@@ -14,8 +14,14 @@ playerTurn = random.randint(0,1)==0
 #Déclarer la variable choice sans valeur (None)
 choice = None
 
+# Déclarer une variable booléan firstPlayerChoice et lui assigner la valeur True
+firstPlayerChoice = True
+
 #Définir printGrid qui affiche la grille du jeu
 def printGrid():
+    # Assigner 1 à une variable index
+    index = 1
+
     # Faire une boucle qui se répète suivant le nombre de lignes dans grid
     for i in range(len(grid)):
         #Si i est égal à zéro
@@ -28,8 +34,14 @@ def printGrid():
         for j in grid[i]:
             # Si j est égal à 0
             if j==0:
-                #afficher un espace vide
-                print(" ", end="")
+                # Si firstPlayerChoice est égal à True
+                if firstPlayerChoice:
+                    # Affichier index
+                    print(index, end="")
+                else:
+                    # Afficher un espace vide
+                    print(" ", end="")
+                index=index+1
             # Sinon si j est égal à 1
             elif j==1:
                 #Afficher un O
@@ -437,6 +449,10 @@ while True:
     grid[x][y] = playerTurn and 1 or 2
     #mettre choice à None
     choice = None
+    # Si playerTurn est True et que firstPlayerChoice est True
+    if playerTurn and firstPlayerChoice:
+        # Assigner False à firstPlayerChoice
+        firstPlayerChoice = False
     #inverser playerTurn
     playerTurn = not playerTurn
     #Si checkVictory(1) renvoie true:
