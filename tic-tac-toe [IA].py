@@ -177,7 +177,7 @@ def getBoxValue(i):
     #retourner la valeur de la position x, y dans la grille
     return grid[x][y]
 
-#définir une fonction CPUChoice qui permettra à l'IA de faire des choix
+#définir une fonction CPUChoice qui permettra à l'IA de choisir une case
 def CPUChoice():
     #définition d'un tableau corner possédant les coins de la grille
     corners = [1, 3, 7, 9]
@@ -185,7 +185,7 @@ def CPUChoice():
     random.shuffle(corners)
     #définir ligne à 0
     ligne = 0
-    #définir possibleLastBox à 0
+    #définir possibleLastBox à None
     possibleLastBox = None
     #définir une variable winBox à None
     winBox = None
