@@ -26,7 +26,7 @@ def printGrid():
     for i in range(len(grid)):
         #Si i est égal à zéro
         if i==0:
-            #On affiche "┌─┬─┬─┐", le sommet de la grille
+            #On affiche "┌───┬───┬───┐", le sommet de la grille
             print("┌───┬───┬───┐")
         #On affiche une barre de séparation
         print("│", end="")
@@ -55,11 +55,11 @@ def printGrid():
             print("│", end="")
         #Si i est égal à 2
         if i==2:
-            #Affichier "\n└─┴─┴─┘", le  bas de la grille
+            #Affichier "\n└───┴───┴───┘", le  bas de la grille
             print("\n└───┴───┴───┘")
         #Sinon
         else:
-            #On affiche "\n├─┼─┼─┤" qui sépare deux lignes
+            #On affiche "\n├───┼───┼───┤" qui sépare deux lignes
             print("\n├───┼───┼───┤")
 
 #Faire une fonction checkGrid qui prend une position x obligatoire et une position y optionnel. Si y n'est pas renseigné, la valeur par défaut est -1
