@@ -171,7 +171,7 @@ def checkVictory(nb:int)->bool:
     return False
 
 #definir une fonction renvoie la valeur a la position de la grille
-def getBoxValue(i):
+def getBoxValue(i:int)->int:
     #convertir i en x, y
     x, y = convertToGridIndex(i)
     #retourner la valeur de la position x, y dans la grille
@@ -389,7 +389,7 @@ def CPUChoice():
     return random.randint(1, 9)
 
 #définir une fonction permettant de détecter si la grille est pleine
-def isGridFull():
+def isGridFull()->bool:
     #définir une variable boxTaken
     boxTaken = 0
     #Pour x dans une rangée de  3
