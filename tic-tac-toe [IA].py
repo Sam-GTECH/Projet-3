@@ -164,8 +164,8 @@ def getBoxValue(i):
     #retourner la valeur de la position x, y dans la grille
     return grid[x][y]
 
-#définir une fonction ordiChoice qui permettra à l'IA de faire des choix
-def ordiChoice():
+#définir une fonction CPUChoice qui permettra à l'IA de faire des choix
+def CPUChoice():
     #définition d'un tableau corner possédant les coins de la grille
     corners = [1, 3, 7, 9]
     #mélange les nombres dans la liste
@@ -389,7 +389,7 @@ def isGridFull():
                 boxTaken += 1
     #retourner boxTaken == 9 (true ou false)
     return boxTaken==9
-#afficher un message montrant que l'utilisateur possède les O et l'ordi les X
+#afficher un message montrant que l'utilisateur possède les O et le CPU les X
 print("User: O | CPU: X")
 #boucle infinie
 while True:
@@ -416,7 +416,7 @@ while True:
                     #mettre choix à None
                     choice = None
                     #afficher un message disant que la case est occupée
-                    print("The chosen case is already taken.")
+                    print("The chosen box is already taken.")
             #si l'essai echoue:
             except:
                 #mettre choix à None
@@ -426,11 +426,11 @@ while True:
     #Sinon:
     else:
         #afficher un message disant que l'IA doit jouer
-        print("It's the ordi's turn!")
+        print("It's the CPU's turn!")
         #Tant que choice vaut None ou que la case choisie est prise
         while choice==None or not checkGrid(choice):
-            #assigner ce que retourne ordiChoice à choice
-            choice = ordiChoice()
+            #assigner ce que retourne CPUChoice à choice
+            choice = CPUChoice()
     #assigner à x, y ce que retourne convertToGridIndex(choice)
     x, y = convertToGridIndex(choice)
     #assigner à la grid en position x, y 1 ou 2 suivant si playerTurn est True ou False
