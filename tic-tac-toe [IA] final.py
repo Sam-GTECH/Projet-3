@@ -419,81 +419,153 @@ while True:
             try:
                 #convertir choice en entier
                 choice = int(choice)
-                print(choice==1-9)
+                #Si le choix est égal à 1 - 9
                 if choice == 1-9:
+                    #mettre i à 0
                     i = 0
+                    #mettre oldgrid à grid
                     oldgrid = grid
+                    #mettre numberPrinted à firstPlayerChoice
                     numberPrinted = firstPlayerChoice
+                    #mettre firstPlayerChoice à False
                     firstPlayerChoice = False
+                    #On atttribue à une variable grid une matrix de 3 par 3
                     grid = [[0, 0, 0],
                             [0, 0, 0],
                             [0, 0, 0]]
+                    #assigner 1 à la position 0, 0 de la grille
                     grid[0][0]=1
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 1 à la position 0, 1 de la grille
                     grid[0][1]=1
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 1 à la position 0, 2 de la grille
                     grid[0][2]=1
+                    #assigner 0 à la position 0, 0 de la grille
                     grid[0][0]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 0, 1 de la grille
                     grid[0][1]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 0, 2 de la grille
                     grid[0][2]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 2 à la position 1, 2
                     grid[1][2]=2
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 2 à la position 1, 1
                     grid[1][1]=2
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 2 à la position 1, 0 de la grille
                     grid[1][0]=2
+                    #assigner 0 à la position 1, 2 de la grille
                     grid[1][2]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 1, 1 de la grille
                     grid[1][1]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 1, 0 de la grille
                     grid[1][0]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()                    
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 1 à la position 2, 1 de la grille
                     grid[2][0]=1
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 1 à la position 2, 1 de la grille
                     grid[2][1]=1
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 1 à la position 2, 2 de la grille
                     grid[2][2]=1
+                    #assigner 0 à la position 2, 0 de la grille
                     grid[2][0]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 2, 1
                     grid[2][1]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes
                     sleep(0.15)
+                    #assigner 0 à la position 2, 2
                     grid[2][2]=0
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #afficher la grille avec printGrid()
                     printGrid()
+                    #attendre 0.15 secondes                    
                     sleep(0.15)
+                    #afficher plusieurs saut de ligne
                     print("\n\n\n\n\n\n\n")
+                    #mettre choice à None
                     choice = None
+                    #mettre grid à oldgrid
                     grid = oldgrid
+                    #mettre firstPlayerChoice à numberPrinted
                     firstPlayerChoice = numberPrinted
                 #Si choice est inferieur à 1 ou supérieur à 9:
                 elif choice<1 or choice>9:
