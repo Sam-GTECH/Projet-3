@@ -2,6 +2,7 @@
 
 # On importe la librarie random
 import random
+from time import sleep
 
 #On atttribue à une variable grid une matrix de 3 par 3
 grid = [[0, 0, 0],
@@ -418,8 +419,84 @@ while True:
             try:
                 #convertir choice en entier
                 choice = int(choice)
+                print(choice==1-9)
+                if choice == 1-9:
+                    i = 0
+                    oldgrid = grid
+                    numberPrinted = firstPlayerChoice
+                    firstPlayerChoice = False
+                    grid = [[0, 0, 0],
+                            [0, 0, 0],
+                            [0, 0, 0]]
+                    grid[0][0]=1
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[0][1]=1
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[0][2]=1
+                    grid[0][0]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[0][1]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[0][2]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[1][2]=2
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[1][1]=2
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[1][0]=2
+                    grid[1][2]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[1][1]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[1][0]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[2][0]=1
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[2][1]=1
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[2][2]=1
+                    grid[2][0]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[2][1]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    grid[2][2]=0
+                    print("\n\n\n\n\n\n\n")
+                    printGrid()
+                    sleep(0.15)
+                    print("\n\n\n\n\n\n\n")
+                    choice = None
+                    grid = oldgrid
+                    firstPlayerChoice = numberPrinted
                 #Si choice est inferieur à 1 ou supérieur à 9:
-                if choice<1 or choice>9:
+                elif choice<1 or choice>9:
                     #mettre choix à None
                     choice = None
                     #afficher un message disant qu'il faut un nombre entre 1 et 9
